@@ -9,7 +9,8 @@ const client = mysql.createConnection({
     user:process.env.USER,
     password:process.env.DATABASE_PASSWORD,
     database:process.env.DATABASE_NAME,
-    multipleStatements:true
+    multipleStatements:true,
+    port:process.env.DATABASE_PORT
 })
 
 client.connect((err , args) => {
