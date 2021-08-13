@@ -10,7 +10,7 @@ const clients = mysql.createPool({
     password:process.env.DATABASE_PASSWORD,
     database:process.env.DATABASE_NAME,
     multipleStatements:true,
-    port:3307
+    port:process.env.DATABASE_PORT
 })
 
 let first = true
