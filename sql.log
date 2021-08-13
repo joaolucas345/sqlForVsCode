@@ -1,14 +1,7 @@
 
 err => undefined 
     
-result => 0
+result => {"Tables_in_bestmovie":"topmovies"}
 
-result => 174
+result => {"_parse":{"dbLength":18,"dbOffset":5,"tableLength":11,"tableOffset":24,"orgTableLength":11,"orgTableOffset":36,"nameLength":19,"nameOffset":48,"orgNameLength":10,"orgNameOffset":68,"packet":{"buf":{"type":"Buffer","data":[3,100,101,102,18,105,110,102,111,114,109,97,116,105,111,110,95,115,99,104,101,109,97,11,84,65,66,76,69,95,78,65,77,69,83,11,84,65,66,76,69,95,78,65,77,69,83,19,84,97,98,108,101,115,95,105,110,95,98,101,115,116,109,111,118,105,101,10,84,65,66,76,69,95,78,65,77,69,0,12,224,0,36,1,0,0,253,1,0,0,0,0]},"pos":90,"end":92,"encoding":"utf8"}},"collation":{"index":224,"name":"UTF8MB4_UNICODE_CI","charset":"utf8"},"columnLength":292,"columnType":253,"flags":1,"scale":0,"type":"VAR_STRING"}
 
-result => 0
-
-result => ""
-
-result => 34
-
-result => 0

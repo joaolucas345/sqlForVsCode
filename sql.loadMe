@@ -1,6 +1,1 @@
-#UPDATE devices SET battery = "hey" WHERE id = 2 
-#SELECT * FROM devices
-#ALTER TABLE devices ADD (bluetooth int,  disturb int)
-#DELETE FROM log 
-
-#CREATE TABLE log (message varchar(5000) , date DATETIME DEFAULT CURRENT_TIMESTAMP)
+SHOW tables;

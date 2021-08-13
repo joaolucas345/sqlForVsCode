@@ -1,32 +1,37 @@
-const mysql = require("mysql2")
+const mysql = require("mariadb")
 const fs = require("fs")
 const dotenv = require("dotenv")
 const path = require("path")
 dotenv.config({path:path.join(__dirname , ".env")})
 
-const client = mysql.createConnection({
+const clients = mysql.createPool({
     host:process.env.HOST,
     user:process.env.USER,
     password:process.env.DATABASE_PASSWORD,
     database:process.env.DATABASE_NAME,
-    multipleStatements:true
+    multipleStatements:true,
+    port:3307
 })
 
-client.connect((err , args) => {
-	console.log(`connected succesfully to sql server , err => ${err} args => ${args}`)
+let first = true
+
+
+clients.getConnection().then((client) => {
+	if(first){
+        first = false
     const SqlScript = fs.readFileSync(path.join(__dirname , "sql.loadMe")).toString()
     let finalResult = SqlScript
     while(finalResult.includes(";;")){
         finalResult = finalResult.replace(";;" , ";")
     }
     console.log("START OF THE QUERY \n\n", finalResult , "\n\n END OF QUERY")
-    client.query(finalResult , (err , result) => {
+    client.query(finalResult).then((result , err) => {
         let logString = ""
         console.log(`
             err => ${err?.toString()} 
         `)
         logString += `
-err => ${err?.toString()} 
+err => ${err?.map(e => console.log(e , "<= hey"))} 
     `
         for(k in result){
             console.log(`
@@ -36,7 +41,8 @@ result => ${result[k].map ? result[k].map(pot => JSON.stringify(pot)+"\n") : JSO
         }
         fs.writeFileSync(path.join(__dirname , "sql.log") , logString)
         process.exit()
+    })}
     })
-})
+
 
 
